@@ -19,7 +19,7 @@ Prerequisites
 
 - Environment setup
 
- - export Firebase database and Firebase storage URL in your .bashrc. 
+export `Firebase database` and `Firebase storage` URL in your .bashrc. 
 
 Example:
 
