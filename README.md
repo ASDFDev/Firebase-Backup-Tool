@@ -18,8 +18,9 @@ Prerequisites: Ensure you export Firebase database and Firebase storage URL in y
 Example:
 
 
-`export DATABASE=https://<YOUR URL HERE>.firebaseio.com/
-export STORAGE=<YOUR URL HERE>.appspot.com`
+`export DATABASE=https://<YOUR URL HERE>.firebaseio.com/`
+
+`export STORAGE=<YOUR URL HERE>.appspot.com`
 
 
 Simply call `./firebash.sh` (ensure you have executable permission)
