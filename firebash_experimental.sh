@@ -21,6 +21,8 @@ OPTIONS=$(whiptail --title "Firebase Backup Tool" --menu "" 15 60 4 \
 "2" "Restore Data" 3>&1 1>&2 2>&3)
 TODAY=`date '+%Y%m%d_%H%M'`;
 FILENAME=FirebaseBackup-$TODAY.json
+BACKUP_DIRECTORY=$HOME/firebase-backup
+
 : ${DATABASE?"Need to set Database URL"}
 : ${STORAGE:?"Need to set Storage URL"}
 userOptions=$?
@@ -30,8 +32,8 @@ if [ "$userOptions" = 0 ]; then
 	if [ "$OPTIONS" = 1 ]; then
               {
 		for ((i=0; i<=100; i+=20)); do
-		curl -s "${DATABASE}.json?print=pretty" >> $FILENAME
-		curl -s -H "Content-Type: text/plain" -X POST -d $FILENAME https://firebasestorage.googleapis.com/v0/b/${STORAGE}/o/${FILENAME} >> /dev/null
+		curl -s "${DATABASE}.json?print=pretty" >> $BACKUP_DIRECTORY/$FILENAME
+		curl -s -H "Content-Type: text/plain" -X POST -d $BACKUP_DIRECTORY/$FILENAME https://firebasestorage.googleapis.com/v0/b/${STORAGE}/o/${FILENAME} >> /dev/null
 		echo $i
 		done
 	      } | whiptail --gauge "Backup in progress..." 6 60 0
